@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ORBIT Insurance</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-brand">
+                <i class="fas fa-shield-alt"></i>
+                <span>ORBIT</span>
+            </div>
+            <button class="sidebar-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="overview">
+                <i class="fas fa-home"></i>
+                <span>Overview</span>
+            </a>
+            <a href="#" class="nav-item" data-section="recommendations">
+                <i class="fas fa-robot"></i>
+                <span>Get Recommendations</span>
+            </a>
+            <a href="#" class="nav-item" data-section="compare">
+                <i class="fas fa-balance-scale"></i>
+                <span>Compare Plans</span>
+            </a>
+            <a href="#" class="nav-item" data-section="policies">
+                <i class="fas fa-file-contract"></i>
+                <span>My Policies</span>
+            </a>
+            <a href="#" class="nav-item" data-section="quotes">
+                <i class="fas fa-bookmark"></i>
+                <span>Saved Quotes</span>
+            </a>
+            <a href="#" class="nav-item" data-section="profile">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="btn btn-outline-white btn-block" onclick="handleLogout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <button class="mobile-sidebar-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="topbar-title">
+                <h1 id="pageTitle">Dashboard Overview</h1>
+            </div>
+            <div class="topbar-actions">
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=User&background=4A90E2&color=fff" alt="User" class="user-avatar">
+                    <span class="user-name" id="userName">Loading...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Overview Section -->
+            <section id="overview" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3 id="activePolicies">0</h3>
+                            <p>Active Policies</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3 id="totalCoverage">$0</h3>
+                            <p>Total Coverage</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3 id="totalPremium">$0</h3>
+                            <p>Annual Premium</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <i class="fas fa-bookmark"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3 id="savedQuotes">0</h3>
+                            <p>Saved Quotes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3>Recent Policies</h3>
+                            <a href="#" onclick="switchSection('policies')">View All</a>
+                        </div>
+                        <div id="recentPolicies" class="policies-list">
+                            <p class="empty-state">No policies yet. Get recommendations to find your perfect plan!</p>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3>Quick Actions</h3>
+                        </div>
+                        <div class="quick-actions">
+                            <button class="action-btn" onclick="switchSection('recommendations')">
+                                <i class="fas fa-robot"></i>
+                                <span>Get AI Recommendations</span>
+                            </button>
+                            <button class="action-btn" onclick="switchSection('compare')">
+                                <i class="fas fa-balance-scale"></i>
+                                <span>Compare Plans</span>
+                            </button>
+                            <button class="action-btn" onclick="switchSection('profile')">
+                                <i class="fas fa-user-edit"></i>
+                                <span>Update Profile</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recommendations Section -->
+            <section id="recommendations" class="content-section">
+                <div class="recommendation-container">
+                    <div class="recommendation-form-card">
+                        <h2><i class="fas fa-robot"></i> Get AI-Powered Recommendations</h2>
+                        <p>Tell us about yourself and we'll find the perfect insurance plans for you</p>
+                        
+                        <form id="recommendationForm" onsubmit="getRecommendations(event)">
+                            <div class="form-group">
+                                <label for="recAge">Your Age</label>
+                                <input type="number" id="recAge" min="1" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="recSalary">Annual Income ($)</label>
+                                <input type="number" id="recSalary" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="recBudget">Monthly Budget for Insurance ($)</label>
+                                <input type="number" id="recBudget" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="recType">Insurance Type (Optional)</label>
+                                <select id="recType">
+                                    <option value="">All Types</option>
+                                    <option value="Health">Health</option>
+                                    <option value="Life">Life</option>
+                                    <option value="Vehicle">Vehicle</option>
+                                    <option value="Home">Home</option>
+                                    <option value="Travel">Travel</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-large">
+                                <i class="fas fa-magic"></i> Get Recommendations
+                            </button>
+                        </form>
+                    </div>
+
+                    <div id="recommendationResults" class="recommendation-results" style="display:none;">
+                        <h2>Your Personalized Recommendations</h2>
+                        <div id="recommendationsList" class="recommendations-list"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Compare Section -->
+            <section id="compare" class="content-section">
+                <div class="compare-container">
+                    <h2><i class="fas fa-balance-scale"></i> Compare Insurance Plans</h2>
+                    <p>Select 2-4 plans to compare side by side</p>
+                    
+                    <div class="compare-selection">
+                        <div id="compareSelection" class="compare-chips"></div>
+                        <button class="btn btn-primary" onclick="compareSelectedPlans()" id="compareBtn" disabled>
+                            Compare Selected Plans
+                        </button>
+                    </div>
+
+                    <div class="available-plans">
+                        <h3>Available Plans</h3>
+                        <div id="comparePlansGrid" class="plans-grid-small"></div>
+                    </div>
+
+                    <div id="comparisonTable" class="comparison-table-container" style="display:none;"></div>
+                </div>
+            </section>
+
+            <!-- Policies Section -->
+            <section id="policies" class="content-section">
+                <div class="policies-container">
+                    <div class="section-header-inline">
+                        <h2><i class="fas fa-file-contract"></i> My Insurance Policies</h2>
+                        <button class="btn btn-primary" onclick="switchSection('recommendations')">
+                            <i class="fas fa-plus"></i> Add New Policy
+                        </button>
+                    </div>
+                    <div id="policiesList" class="policies-grid"></div>
+                </div>
+            </section>
+
+            <!-- Quotes Section -->
+            <section id="quotes" class="content-section">
+                <div class="quotes-container">
+                    <h2><i class="fas fa-bookmark"></i> Saved Quotes</h2>
+                    <div id="quotesList" class="quotes-grid"></div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile" class="content-section">
+                <div class="profile-container">
+                    <h2><i class="fas fa-user"></i> Profile Settings</h2>
+                    <div class="profile-card">
+                        <form id="profileForm" onsubmit="updateProfile(event)">
+                            <div class="form-group">
+                                <label for="profileName">Full Name</label>
+                                <input type="text" id="profileName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profileEmail">Email</label>
+                                <input type="email" id="profileEmail" disabled>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="profileAge">Age</label>
+                                    <input type="number" id="profileAge" min="1" max="100">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profileSalary">Annual Income ($)</label>
+                                    <input type="number" id="profileSalary" min="0">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="profilePhone">Phone Number</label>
+                                <input type="tel" id="profilePhone">
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Update Profile
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Plan Details Modal -->
+    <div id="planModal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close" onclick="closePlanModal()">&times;</span>
+            <div id="planModalContent"></div>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/dashboard.js"></script>
+    <script src="scripts/recommendation.js"></script>
+</body>
+</html>

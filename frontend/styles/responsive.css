@@ -1,0 +1,345 @@
+/* ========== Tablet Styles (768px - 1024px) ========== */
+@media (max-width: 1024px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-image {
+        text-align: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .steps-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .step-connector {
+        display: none;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== Mobile Styles (max-width: 768px) ========== */
+@media (max-width: 768px) {
+    /* Navigation */
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--white);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: var(--shadow);
+        padding: 2rem 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-link {
+        padding: 1rem;
+    }
+
+    .nav-actions {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* Sections */
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Features Grid */
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Plans */
+    .plan-filters {
+        gap: 0.5rem;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* CTA */
+    .cta-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .cta-content p {
+        font-size: 1rem;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Forms */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Modal */
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .modal-large {
+        max-width: 95%;
+    }
+
+    /* Dashboard */
+    .sidebar {
+        left: -260px;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .mobile-sidebar-toggle {
+        display: block;
+    }
+
+    .topbar {
+        padding: 1rem;
+    }
+
+    .topbar-title h1 {
+        font-size: 1.2rem;
+    }
+
+    .user-name {
+        display: none;
+    }
+
+    .dashboard-content {
+        padding: 1rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recommendation-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .recommendation-pricing {
+        text-align: center;
+    }
+
+    .policies-grid,
+    .quotes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .policy-actions {
+        flex-direction: column;
+    }
+
+    .section-header-inline {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+/* ========== Small Mobile (max-width: 480px) ========== */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .btn-large {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .plan-card {
+        padding: 1.5rem;
+    }
+
+    .plan-price {
+        font-size: 1.5rem;
+    }
+
+    .match-score {
+        width: 60px;
+        height: 60px;
+    }
+
+    .match-score .score {
+        font-size: 1.2rem;
+    }
+
+    .annual-premium {
+        font-size: 1.5rem;
+    }
+
+    .comparison-table {
+        font-size: 0.85rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 0.5rem;
+    }
+}
+
+/* ========== Print Styles ========== */
+@media print {
+    .header,
+    .footer,
+    .sidebar,
+    .topbar,
+    .modal,
+    .btn,
+    .nav-menu,
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    body {
+        background: white;
+    }
+
+    .dashboard-card,
+    .policy-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+
+/* ========== High DPI Displays ========== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .hero-card {
+        border-width: 0.5px;
+    }
+
+    .stat-card {
+        box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    }
+}
+
+/* ========== Reduced Motion ========== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .floating {
+        animation: none;
+    }
+}
+
+/* ========== Dark Mode Support ========== */
+@media (prefers-color-scheme: dark) {
+    .dashboard-body {
+        background: #1a1a1a;
+    }
+
+    .dashboard-card,
+    .policy-card,
+    .quote-card,
+    .recommendation-card {
+        background: #2a2a2a;
+        color: #ffffff;
+    }
+
+    .topbar {
+        background: #2a2a2a;
+        color: #ffffff;
+    }
+}

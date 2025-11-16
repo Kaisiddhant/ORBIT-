@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORBIT - AI-Powered Insurance Recommendations</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="brand-name">ORBIT</span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#features" class="nav-link">Features</a></li>
+                    <li><a href="#plans" class="nav-link">Plans</a></li>
+                    <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="btn btn-outline" onclick="openLoginModal()">Login</button>
+                    <button class="btn btn-primary" onclick="openSignupModal()">Sign Up</button>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Smart Insurance Decisions Made Simple</h1>
+                    <p class="hero-subtitle">AI-powered recommendations to find the perfect insurance plan tailored to your needs, budget, and lifestyle.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-large btn-primary" onclick="openSignupModal()">
+                            Get Started <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="btn btn-large btn-outline-white" onclick="scrollToPlans()">
+                            Explore Plans
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10,000+</div>
+                            <div class="stat-label">Happy Customers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Insurance Plans</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">4.8/5</div>
+                            <div class="stat-label">Customer Rating</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-card floating">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI-Powered</h3>
+                        <p>Machine learning algorithms analyze your profile</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose ORBIT?</h2>
+                <p class="section-subtitle">Experience the future of insurance comparison with our innovative features</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Recommendations</h3>
+                    <p>Machine learning algorithms suggest personalized insurance plans based on your age, income, and preferences.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Premium Estimation</h3>
+                    <p>Get instant, accurate premium calculations tailored to your unique profile and requirements.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Plan Comparison</h3>
+                    <p>Compare multiple insurance plans side-by-side to make informed decisions easily.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Digital Policies</h3>
+                    <p>Download professional PDF policy documents instantly after plan selection.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure Platform</h3>
+                    <p>Bank-level security with encrypted data and secure authentication methods.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Fully Responsive</h3>
+                    <p>Access from any device - desktop, tablet, or mobile with seamless experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans" class="plans-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Insurance Categories</h2>
+                <p class="section-subtitle">Choose from a wide range of insurance types</p>
+            </div>
+            
+            <div class="plan-filters">
+                <button class="filter-btn active" data-type="all">All Plans</button>
+                <button class="filter-btn" data-type="Health">Health</button>
+                <button class="filter-btn" data-type="Life">Life</button>
+                <button class="filter-btn" data-type="Vehicle">Vehicle</button>
+                <button class="filter-btn" data-type="Home">Home</button>
+                <button class="filter-btn" data-type="Travel">Travel</button>
+            </div>
+
+            <div id="plansGrid" class="plans-grid">
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading plans...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How ORBIT Works</h2>
+                <p class="section-subtitle">Four simple steps to your perfect insurance plan</p>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fas fa-user-plus"></i></div>
+                    <h3>Create Account</h3>
+                    <p>Sign up with email or Google in seconds</p>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fas fa-user-edit"></i></div>
+                    <h3>Enter Details</h3>
+                    <p>Provide your age, income, and preferences</p>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Get AI Recommendations</h3>
+                    <p>Our ML algorithm finds the best matches</p>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon"><i class="fas fa-file-contract"></i></div>
+                    <h3>Purchase & Download</h3>
+                    <p>Select a plan and get instant PDF policy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Find Your Perfect Insurance Plan?</h2>
+                <p>Join thousands of satisfied customers who found the right coverage with ORBIT</p>
+                <button class="btn btn-large btn-white" onclick="openSignupModal()">
+                    Start Now - It's Free <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>ORBIT</span>
+                    </div>
+                    <p>AI-powered insurance recommendations for smarter financial decisions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">Health Insurance</a></li>
+                        <li><a href="#">Life Insurance</a></li>
+                        <li><a href="#">Vehicle Insurance</a></li>
+                        <li><a href="#">Home Insurance</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@orbit.com</li>
+                        <li><i class="fas fa-phone"></i> 1-800-ORBIT-INS</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Insurance St, NY</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ORBIT Insurance Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Welcome Back</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <div id="loginError" class="error-message"></div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span class="btn-text">Login</span>
+                    <span class="btn-loader" style="display:none;"><i class="fas fa-spinner fa-spin"></i></span>
+                </button>
+            </form>
+            <div class="divider">OR</div>
+            <button class="btn btn-google btn-block" onclick="handleGoogleLogin()">
+                <i class="fab fa-google"></i> Continue with Google
+            </button>
+            <p class="modal-footer-text">
+                Don't have an account? <a href="#" onclick="closeLoginModal(); openSignupModal()">Sign up</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSignupModal()">&times;</span>
+            <h2>Create Account</h2>
+            <form id="signupForm" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required placeholder="Min 8 characters">
+                    <small>Must contain uppercase, lowercase, and numbers</small>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="signupAge">Age</label>
+                        <input type="number" id="signupAge" min="18" max="100" placeholder="25">
+                    </div>
+                    <div class="form-group">
+                        <label for="signupSalary">Annual Income</label>
+                        <input type="number" id="signupSalary" min="0" placeholder="50000">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="signupPhone">Phone (Optional)</label>
+                    <input type="tel" id="signupPhone" placeholder="+1 234 567 8900">
+                </div>
+                <div id="signupError" class="error-message"></div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span class="btn-text">Create Account</span>
+                    <span class="btn-loader" style="display:none;"><i class="fas fa-spinner fa-spin"></i></span>
+                </button>
+            </form>
+            <div class="divider">OR</div>
+            <button class="btn btn-google btn-block" onclick="handleGoogleSignup()">
+                <i class="fab fa-google"></i> Sign up with Google
+            </button>
+            <p class="modal-footer-text">
+                Already have an account? <a href="#" onclick="closeSignupModal(); openLoginModal()">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/auth.js"></script>
+</body>
+</html>
